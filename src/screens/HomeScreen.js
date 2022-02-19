@@ -10,18 +10,21 @@ import { activitiesArray } from '../components/data'
 const HomeScreen = () => {
   
   const {activity, setActivity, duration, setDuration, date, setDate, fullActivity, id, isScheduled} = useContext(ScheduleContext)
-  console.log(fullActivity);
   
+    console.log(fullActivity);
 
   
     return (
    <>
       <Header/>
-      <div className='wrapper'>
+      <Container>
+        <div className="wrapper">
+          
+        
           <h3>Track Your Activity</h3>
           <Row>
                 {activitiesArray.map((activity,index)=>{
-                  return <Col key={index} xs={6} md={3}>
+                  return <Col key={index} xs={6} md={3} style={{display:'grid', justifyContent:'center'}}>
                   <SingleActivity 
                   name={activity.name}
                   image={activity.image}
@@ -30,25 +33,26 @@ const HomeScreen = () => {
               </Col>
               })}
           </Row>
-          <Row>
+          <Row style={{marginTop:'100px', textAlign:'left'} }>
+            {fullActivity.length<1 ? 'You dont have scheduled activities yet' : <h3>Scheduled Activities</h3>}
                 {isScheduled && fullActivity.map((item, index)=>{
 
-                  return <div key={index}>
-                    <p>{item.date}</p>
-                      <SchedulePics name={item.activity.name} logo={item.activity.logo}/>
-                    <p>{item.duration}</p>
-                  </div>
+                  return <Col key={index} xs={3} md={2} style={{textAlign:'center'}}>
+                    <p>{item.date}{item.day}</p>
+                    <p>{item.weekDay}</p>
+                    
+                      <SchedulePics logo={item.activity.logo}/>
+                    <p>{item.time}</p>
+                  </Col>
                 })}
-                  
-                
           </Row>
               <Link to='/schedule'>
                 <Button style={{backgroundColor:'#D97D54'}}>
                     Schedule Activity
                 </Button>
               </Link>
-          
-      </div>
+        </div>  
+      </Container>
    </>  
         
   )

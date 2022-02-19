@@ -9,8 +9,8 @@ import ScheduleScreen from "./screens/ScheduleScreen";
 function App() {
 
   const [activity, setActivity] = useState('')
-  const [duration, setDuration] = useState(null)
-  const [date, setDate] = useState(null)
+  const [duration, setDuration] = useState(0)
+  const [date, setDate] = useState('')
   const [fullActivity, setFullActivity] = useState([])
   const [id, setId] = useState(null)
   const [isScheduled, setIsScheduled] = useState(false)

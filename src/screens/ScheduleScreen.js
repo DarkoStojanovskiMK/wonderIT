@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react'
+import React, {useState, useContext, useEffect} from 'react'
 import { useNavigate } from 'react-router-dom'
 import {ScheduleContext} from '../context/ScheduleContext'
 import surfLogo from '../pictures/surf@2x.png'
@@ -11,6 +11,9 @@ import SchedulePics from '../components/SchedulePics'
 import { Link } from 'react-router-dom'
 import WheelPicker from 'react-simple-wheel-picker';
 import { days } from '../components/data'
+import DatePicker from "react-datepicker";
+
+import "react-datepicker/dist/react-datepicker.css";
 
 
 
@@ -18,11 +21,23 @@ import { days } from '../components/data'
 const ScheduleScreen = ({}) => {
   const {activity, setActivity, setIsScheduled, duration, setDuration, date, setDate, fullActivity, setFullActivity,id,setId} = useContext(ScheduleContext)
   const navigate = useNavigate()
-  const [settingTime,setSettingTime] =useState(false) 
-
+  const [time,setTime]=useState('') 
+  const [startDate, setStartDate] = useState(new Date())
+  const [weekDay, setWeekDay] = useState('')
+  
+  
+  
+  const handleOnChange=(x)=>{
+    setStartDate(x)
+    setWeekDay(x.toLocaleDateString('default', { weekday: 'long' }))
+    setDate(x.toLocaleDateString('default', { month: 'long', day: 'numeric'}))
+    setTime(x.toString().substr(15,6))
+  }
   const handleSubmit = (e)=>{
     e.preventDefault()
-    let newActivity = {activity, duration, date}
+    console.log(time)
+    let newActivity = {activity, duration, date, weekDay, time}
+    console.log(newActivity)
     setFullActivity([...fullActivity, newActivity])
     console.log(fullActivity)
     setIsScheduled(true)
@@ -44,31 +59,48 @@ const ScheduleScreen = ({}) => {
               </Col>
             })}
           </div>
-          <div >
-           
-            
-          </div>
-          <Form.Group >
+         
+          {/* <Form.Group >
             <p>How log do you want to do this activity</p>
-            <Form.Control style={{float:'left'}}/>
+            <Form.Control 
+              style={{float:'left'}}
+              placeholder='15 min'
+              value={duration}
+              onChange={(e)=>setDuration(e.target.value)}/>
             <Button type='button' onClick={()=>setDuration(15)}>l</Button>
-          </Form.Group>
-          <div className="wheelPicker">
+          </Form.Group> */}
           
-           
+          
+          {/* <Form.Group >
+            <p>When do you want to do this activity</p>
             
-
-          </div>
-          
+            <DatePicker 
+              selected={startDate} 
+               
+              
+              />
+            <Button type='button' >l</Button>
+          </Form.Group> */}
           <Form.Group >
             <p>When do you want to do this activity</p>
-            <Form.Control style={{float:'left'}} />
-            <Button type='button' onClick={()=>setDate(28)}>l</Button>
+            
+            <DatePicker
+              selected={startDate}
+              onChange={(date) =>handleOnChange(date) }
+              showTimeSelect
+              timeFormat="HH:mm"
+              timeIntervals={15}
+              timeCaption="Time"
+              dateFormat="MMMM d, yyyy h:mm aa"
+            />
+            <Button type='button' >l</Button>
           </Form.Group>
-          {/* <Link to='/'> */}
-            <Button type='submit'>Schedule</Button>
-          {/* </Link> */}
+
+
           
+            <Button type='submit'>Schedule</Button>
+          
+
         </Form>
       </Container>
     </div>
