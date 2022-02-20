@@ -14,8 +14,9 @@
   margin: 0;
   box-sizing: border-box;
   font: normal normal bold nunito;
-  font-weight: 500;
+  font-weight: 400;
 }
+
 
 img {
   max-width: 100%;
@@ -25,19 +26,30 @@ h4 {
   font-size: 15px;
 }
 
+h6 {
+  padding-bottom: 15px;
+}
+
+
 p {
-  font-size: 10px;
+
+  font-size: 13px;
+  line-height: 1rem;
+  letter-spacing: 1.1px;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
-.wrapper {
-  text-align: center;
-  margin: auto;
-
+.descriptiveP {
+  color: #6E8CA0;
+  letter-spacing: 0.1px;
+  font-size: 12px;
 }
 
-.wrapper>h3 {
-  margin: 30px 0;
+
+/* -------------Home Screen--------------- */
+.wrapper {
+  text-align: center;
+  margin: 0 auto;
 }
 
 .header {
@@ -69,12 +81,21 @@ p {
   box-shadow: 0px 10px 15px #1B1C201A;
   border-radius: 15px;
   opacity: 1;
+  margin-bottom: 1.5rem;
+}
+
+.singleActivityText {
+  margin-top: 2rem
+}
+
+.wrapper>h3 {
+  margin: 30px 0;
 }
 
 .logoDiv {
-  position: relative;
-  top: -30px;
-  left: 65px;
+  position: absolute;
+  top: 42%;
+  left: 33%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -87,13 +108,18 @@ p {
 
 }
 
+
+/* ----------Schedule Screen---------- */
+
 .scheduleScreen {
   background-color: #344856;
   height: 100vh;
   width: 100vw;
   color: #FFFFFF;
   text-align: center;
-  margin: auto;
+  margin: 0;
+  overflow-y: auto;
+  box-sizing: border-box;
 
 }
 
@@ -107,7 +133,7 @@ p {
   display: grid;
   justify-content: center;
   align-items: center;
-  
+
 }
 
 .schedulePic {
@@ -118,14 +144,72 @@ p {
   display: grid;
   justify-content: center;
   align-items: center;
+  margin-bottom: 7px;
+  cursor: pointer;
 }
+
+
 
 .schedulePic>img {
   width: 35px;
   height: 35px;
 }
-input{
-  max-width: 70%;
+
+
+.pickers {
+  text-align: left;
+  margin: 0 1rem;
+}
+
+.popper {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  height: 230px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.timePicker {
+  height: 56px;
+}
+
+.dateTimePicker {
+  height: 56px;
+}
+
+.closeBtn {
+
+  float: left;
+  color: #FFFFFF;
+  border: none;
+  background-color: transparent;
+  font-size: 25px;
+  font-weight: 300;
+}
+
+.submitBtn:disabled {
+  background-color: #C8D1D3;
+}
+
+.submitBtn {
+  color: #FFFFFF;
+  padding: 1rem 0;
+  border-radius: 30px;
+  border: solid 1px #87BCBF;
+  background-color: #42596529;
+
+}
+
+.scheduleBtn {
+  color: #FFFFFF;
+  padding: 1rem 0;
+  border-radius: 30px;
+  background-color: #D97D54;
+  border: transparent;
+  text-decoration: none;
+
 }
 
 @media screen and (max-width: 1000px) {
@@ -133,6 +217,23 @@ input{
   .singleActivity {
     width: 136px;
     height: 182px;
+    margin-bottom: 1.5rem;
 
+  }
+
+  .singleActivityText {
+    margin-top: 0.5rem;
+  }
+
+  .logoDiv {
+    width: 45px;
+    height: 45px;
+    top: 45%;
+    left: 33%;
+  }
+
+  .logoDiv>img {
+    width: 28px;
+    height: 28px;
   }
 }

@@ -1,8 +1,9 @@
-import React, {useState, useContext} from 'react'
-import { ScheduleContext } from '../context/ScheduleContext'
+import React from 'react'
 
-const SchedulePics = ({logo, name, index}) => {
-    
+
+const SchedulePics = ({logo, name}) => {
+  
+
   return (
     
     <div className='schedulePicOutline'>
