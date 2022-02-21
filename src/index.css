@@ -148,11 +148,13 @@ p {
   cursor: pointer;
 }
 
-
-
 .schedulePic>img {
   width: 35px;
   height: 35px;
+}
+
+.activityBorder {
+  background-color: #D97D54;
 }
 
 

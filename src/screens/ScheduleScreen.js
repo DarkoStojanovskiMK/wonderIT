@@ -30,6 +30,7 @@ const ScheduleScreen = ({}) => {
     let newActivity = {activity, duration, date, weekDay, time}
     setFullActivity([...fullActivity, newActivity])
     setIsScheduled(true)
+    setActivity('')
     navigate('/')
   }
   
